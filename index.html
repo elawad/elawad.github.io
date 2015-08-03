@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<title>Aymen Elawad</title>
+
+	<meta name="description" content="I'm out for coffee; will be back soon." />
+	<meta name="keywords" content="aymen elawad, aymen, elawad" />
+	<meta name="author" content="Aymen Elawad" />
+
+	<meta property="og:title" content="Aymen Elawad" />
+	<meta property="og:url" content="index.html" />
+	<meta property="og:image" content="img/logo.png" />
+	<meta property="og:locale" content="en_US" />
+
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="128x128">
+	<link rel="apple-touch-icon" href="img/logo.png"/>
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
+
+	<script async src="js/touch-and-fastclick.js"></script>
+	
+	<script>
+		window.addEventListener('load',function(){
+			FastClick.attach(document.body)
+		}, !1);
+	</script>
+</head>
+
+<body id="body">
+
+<section class="canvas bg-black-1">
+	<canvas id="canvas-intro" data-color="#FF6F69"></canvas>
+
+	<div class="canvas-container" id="intro">
+		<div class="content-container">
+			<div class="center">
+				<div class="inner-container">
+					<p class="info white">
+						I'm out for a cup of coffee, but will be back soon.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="canvas bg-black-2">
+	<canvas id="canvas-about" data-color="#DA89FF"></canvas>
+
+	<div class="canvas-container" id="about">
+		<div class="content-container">
+			<div class="center">
+				<div class="inner-container">
+					<p class="info white">
+						If you need something,</br>
+						feel free to disturb me.
+					</p>
+					<p class="info-email white">
+						<a href="mailto:info@aymen.net?subject=Hi">say hi</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="canvas bg-black-3">
+	<canvas id="canvas-footer" data-color="#F7941D"></canvas>
+
+	<div class="canvas-container" id="footer">
+		<div class="content-container">
+			<div class="center">
+				<div class="inner-container text-center">
+					<p class="info">
+						<span class="arabic-title">أيمن</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<a class="back-to-top" id="back-to-top" onclick="smoothScr.anim('body')">&#8593;</a>
+</section>
+
+</body>
+
+<script type="text/javascript">
+	function defer() {
+		var element = document.createElement('script');
+		element.src = 'js/script.js';
+		document.body.appendChild(element);
+	}
+	if (window.addEventListener) {
+		window.addEventListener('load', defer, false);
+	} else if (window.attachEvent) {
+		window.attachEvent('onload', defer);
+	} else {
+		window.onload = defer;
+	}
+</script>
+
+</html>
