@@ -2,8 +2,8 @@
 var createCanvas = function (canvasId) {
     var resizeWindow = function() {
         e.width = window.innerWidth - 17;
-        // console.log('win InWid', window.innerWidth);
-        // console.log('e width', e.width);
+        //console.log('win InWid', window.innerWidth);
+        //console.log('e width', e.width);
 
         o();
     };
