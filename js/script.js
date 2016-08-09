@@ -3,7 +3,7 @@ var createCanvas = function (canvasId) {
     var resizeWindow = function() {
         e.width = window.innerWidth - 17;
         // console.log('win InWid', window.innerWidth);
-        console.log('e width', e.width);
+        // console.log('e width', e.width);
 
         o();
     };
@@ -59,7 +59,7 @@ var createCanvas = function (canvasId) {
             this.vy = -1 + Math.random();
             this.radius = Math.random();
         }
-        
+
         t.fillStyle = c;
         r.prototype = {
             create: function() {
@@ -94,7 +94,7 @@ var createCanvas = function (canvasId) {
         distance: 100,
         array: []
     };
-    
+
     window.addEventListener('resize', resizeWindow, false);
 
     s();
