@@ -1,2 +1,7 @@
-# elawad.github.io
-A simple GitHub site.
+GitHub Page
+===========
+
+Demo page using github.io
+
+Link: http://elawad.github.io  
+Alias: http://aymen.net
