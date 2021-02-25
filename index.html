@@ -1,104 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-	<meta content="utf-8" http-equiv="encoding">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-	<title>Aymen Elawad</title>
+  <head>
+    <title>Aymen Elawad</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- user-scalable=no -->
 
-	<meta name="description" content="I'm out for coffee; will be back soon." />
-	<meta name="keywords" content="aymen elawad, aymen, elawad" />
-	<meta name="author" content="Aymen Elawad" />
+    <meta name="author" content="Aymen Elawad" />
+    <meta name="description" content="I'm out for coffee; will be back soon." />
+    <meta name="keywords" content="aymen, elawad" />
+    <meta name="theme-color" content="#2a2a2a">
 
-	<meta property="og:title" content="Aymen Elawad" />
-	<meta property="og:url" content="index.html" />
-	<meta property="og:image" content="img/logo.png" />
-	<meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Aymen Elawad" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:image" content="img/logo.png" />
+    <meta property="og:locale" content="en_US" />
 
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="128x128">
-	<link rel="apple-touch-icon" href="img/logo.png"/>
-	<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" sizes="128x128" />
+    <link rel="apple-touch-icon" href="img/logo.png" />
+    <link rel="stylesheet" href="css/screen.css" />
+  </head>
 
-	<script async src="js/touch-and-fastclick.js"></script>
-	
-	<script>
-		window.addEventListener('load',function(){
-			FastClick.attach(document.body)
-		}, !1);
-	</script>
-</head>
+  <body tabIndex=0>
+    <section id="sec-1">
+      <canvas id="canvas-1" data-color="#FF6F69"></canvas>
 
-<body id="body">
+      <div class="container">
+        <p class="info">
+          I'm out for a cup of coffee, but will be back soon.
+        </p>
+      </div>
+      <a class="scroll" onclick="goTo('sec-2')">&#8595;</a>
+    </section>
 
-<section class="canvas bg-black-1">
-	<canvas id="canvas-intro" data-color="#FF6F69"></canvas>
+    <section id="sec-2">
+      <canvas id="canvas-2" data-color="#DA89FF"></canvas>
 
-	<div class="canvas-container" id="intro">
-		<div class="content-container">
-			<div class="center">
-				<div class="inner-container">
-					<p class="info white">
-						I'm out for a cup of coffee, but will be back soon.
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+      <div class="container">
+        <div>
+          <p class="info">
+            If you need something, feel free to disturb me.
+          </p>
+          <p class="info email">
+            <a href="mailto:info@aymen.net?subject=Hi">say hi</a>
+          </p>
+        </div>
+      </div>
+      <a class="scroll" onclick="goTo('sec-3')">&#8595;</a>
+    </section>
 
-<section class="canvas bg-black-2">
-	<canvas id="canvas-about" data-color="#DA89FF"></canvas>
+    <section id="sec-3">
+      <canvas id="canvas-3" data-color="#F7941D"></canvas>
 
-	<div class="canvas-container" id="about">
-		<div class="content-container">
-			<div class="center">
-				<div class="inner-container">
-					<p class="info white">
-						If you need something,</br>
-						feel free to disturb me.
-					</p>
-					<p class="info-email white">
-						<a href="mailto:info@aymen.net?subject=Hi">say hi</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+      <div class="container">
+        <p class="info arabic">أيمن</p>
+      </div>
+      <a class="scroll up" onclick="goTo('sec-1')">&#8593;</a>
+    </section>
 
-<section class="canvas bg-black-3">
-	<canvas id="canvas-footer" data-color="#F7941D"></canvas>
-
-	<div class="canvas-container" id="footer">
-		<div class="content-container">
-			<div class="center">
-				<div class="inner-container text-center">
-					<p class="info">
-						<span class="arabic-title">أيمن</span>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<a class="back-to-top" id="back-to-top" onclick="smoothScr.anim('body')">&#8593;</a>
-</section>
-
-</body>
-
-<script type="text/javascript">
-	function defer() {
-		var element = document.createElement('script');
-		element.src = 'js/script.js';
-		document.body.appendChild(element);
-	}
-	if (window.addEventListener) {
-		window.addEventListener('load', defer, false);
-	} else if (window.attachEvent) {
-		window.attachEvent('onload', defer);
-	} else {
-		window.onload = defer;
-	}
-</script>
-
+    <script type="module" src="js/script.js"></script>
+    <script src="js/smoothscroll.min.js"></script>
+  </body>
 </html>
