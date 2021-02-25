@@ -84,6 +84,7 @@ a:hover {
 
 .info {
   margin: 0;
+  font-size: 3em;
   font-size: max(2em, 4vw);
   max-width: 11.5em;
 }
@@ -94,8 +95,9 @@ a:hover {
 }
 .info.arabic {
   font-family: ara-jozoor, helvetica, sans-serif;
+  font-size: 9em;
   font-size: min(9em, 50vw);
-  opacity: 0.1;
+  opacity: 0.2;
 }
 
 /* Arrow */
