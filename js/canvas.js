@@ -1,71 +1,80 @@
 const DOT_COUNT = 100;
 
 function createCanvas(canvasId) {
-  const canvas = document.getElementById(canvasId);
-  const ctx = canvas.getContext('2d');
-  const color = canvas.dataset.color;
-  const dots = [];
+  let canvas;
+  let ctx;
+  let color;
+  let width;
+  let height;
+  let dots;
+  let dot;
+  let toggle;
+  let i;
+  const particle = {
+    x: 0,
+    y: 0,
+    vx: 0,
+    vy: 0,
+    radius: 0,
+  };
 
-  const angle = Math.PI * 2;
-  const interval = 2e3 / 60;
-
-  function resizeWindow() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
     ctx.fillStyle = color;
   }
 
-  class Dot {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.vx = -1 + Math.random();
-      this.vy = -1 + Math.random();
-      this.radius = Math.random();
-    }
+  function init() {
+    canvas = document.getElementById(canvasId);
+    ctx = canvas.getContext('2d');
+    color = canvas.dataset.color;
+    dots = [];
 
-    create() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, angle, false);
-      ctx.fill();
-    }
+    resize();
 
-    animate() {
-      var dot;
-      for (var i = 0; i < DOT_COUNT; i++) {
+    // Setup particle detail
+    for (i = 0; i < DOT_COUNT; i++) {
+      dot = Object.create(particle);
+      dot.x = Math.random() * width;
+      dot.y = Math.random() * height;
+      dot.vx = -1 + Math.random();
+      dot.vy = -1 + Math.random();
+      dot.radius = Math.random();
+      dots[i] = dot;
+    }
+  }
+
+  function step() {
+    toggle = !toggle;
+
+    // Move particles
+    if (toggle) {
+      for (i = 0; i < DOT_COUNT; i++) {
         dot = dots[i];
-        if (dot.y < 0 || dot.y > canvas.height) {
-          // dot.vx = dot.vx; // TODO - needed?
-          dot.vy = -dot.vy;
-        }
-        // else // TODO - needed?
-        if (dot.x < 0 || dot.x > canvas.width) {
-          dot.vx = -dot.vx;
-          // dot.vy = dot.vy; // TODO - needed?
-        }
-
+        if (dot.y < 0 || dot.y > height) dot.vy = -dot.vy;
+        if (dot.x < 0 || dot.x > width) dot.vx = -dot.vx;
         dot.x += dot.vx;
         dot.y += dot.vy;
       }
+    } else {
+      // Paint particles
+      ctx.clearRect(0, 0, width, height);
+      for (i = 0; i < DOT_COUNT; i++) {
+        dot = dots[i];
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
+
+    requestAnimationFrame(step);
   }
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    var dot;
-    for (var i = 0; i < DOT_COUNT; i++) {
-      dots.push(new Dot());
-      dot = dots[i];
-      dot.create();
-    }
-
-    dot.animate();
-  }
-
-  window.addEventListener('resize', resizeWindow, false);
-
-  setInterval(draw, interval);
-  resizeWindow();
+  init();
+  step();
+  window.addEventListener('resize', resize);
 }
 
 export default createCanvas;
