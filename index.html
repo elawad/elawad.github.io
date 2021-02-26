@@ -21,19 +21,20 @@
   </head>
 
   <body tabIndex=0>
-    <section id="sec-1">
-      <canvas id="canvas-1" data-color="#FF6F69"></canvas>
+    <section id="section1">
+      <canvas data-color="#FF6F69"></canvas>
 
       <div class="container">
         <p class="info">
           I'm out for a cup of coffee, but will be back soon.
         </p>
       </div>
-      <a class="scroll" onclick="goTo('sec-2')">&#8595;</a>
+
+      <a class="scroll" onclick="goTo('section2')">&#8595;</a>
     </section>
 
-    <section id="sec-2">
-      <canvas id="canvas-2" data-color="#DA89FF"></canvas>
+    <section id="section2">
+      <canvas data-color="#DA89FF"></canvas>
 
       <div class="container">
         <div>
@@ -45,16 +46,18 @@
           </p>
         </div>
       </div>
-      <a class="scroll" onclick="goTo('sec-3')">&#8595;</a>
+
+      <a class="scroll" onclick="goTo('section3')">&#8595;</a>
     </section>
 
-    <section id="sec-3">
-      <canvas id="canvas-3" data-color="#F7941D"></canvas>
+    <section id="section3">
+      <canvas data-color="#F7941D"></canvas>
 
       <div class="container">
         <p class="info arabic">أيمن</p>
       </div>
-      <a class="scroll up" onclick="goTo('sec-1')">&#8593;</a>
+
+      <a class="scroll up" onclick="goTo('section1')">&#8593;</a>
     </section>
 
     <script type="module" src="js/script.js"></script>

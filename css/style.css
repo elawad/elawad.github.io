@@ -45,9 +45,9 @@ section {
   height: 100%;
 }
 
-#sec-1 { background-color: var(--main-bg); }
-#sec-2 { background-color: #242424; }
-#sec-3 { background-color: #202020; }
+#section1 { background-color: var(--main-bg); }
+#section2 { background-color: #242424; }
+#section3 { background-color: #202020; }
 
 /* Particles */
 canvas {

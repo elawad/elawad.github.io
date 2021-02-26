@@ -1,26 +1,45 @@
 import createCanvas from './canvas.js';
 
 // Canvas Particles
-createCanvas('canvas-1');
-createCanvas('canvas-2');
-createCanvas('canvas-3');
+const sections = document.body.querySelectorAll('section');
+sections.forEach(el => createCanvas(el.id));
 
-// Paging
-window.goTo = function(sectionId) {
+// Arrow Paging
+function goTo(sectionId) {
   const section = document.getElementById(sectionId);
-
   section.scrollIntoView({
     block: 'start',
     inline: 'nearest',
     behavior: 'smooth'
   });
 };
+window.goTo = goTo; // used in html
 
-// const doc = document.documentElement;
-// function appHeight() {
-//   alert(`${window.orientation} ${window.innerWidth}x${window.innerHeight}`)
-//   doc.style.setProperty('--app-height', `${window.innerHeight}px`);
-// }
-// // window.addEventListener('resize', appHeight);
-// window.addEventListener('orientationchange', appHeight, false);
-// appHeight();
+// Keyboard Paging
+const shownIds = [];
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const isIn = entry.isIntersecting;
+    const { id } = entry.target;
+    const idx = shownIds.indexOf(id);
+    if (isIn) shownIds.push(id);
+    else if (idx >= 0) shownIds.splice(idx, 1);
+  });
+}, { threshold: [0.01] });
+
+sections.forEach(el => observer.observe(el));
+
+function nextPage(isDown = true) {
+  const ordered = [...shownIds.sort()];
+  if (isDown) ordered.reverse();
+  const id = ordered[0];
+  goTo(id);
+}
+
+document.addEventListener('keyup', event => {
+  const isUp = event.key === 'ArrowUp';
+  const isDown = event.key === 'ArrowDown';
+  if (isUp || isDown) {
+    requestAnimationFrame(() => nextPage(isDown));
+  }
+});

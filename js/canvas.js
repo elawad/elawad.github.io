@@ -1,6 +1,6 @@
 const DOT_COUNT = 100;
 
-function createCanvas(canvasId) {
+function createCanvas(sectionId) {
   let canvas;
   let ctx;
   let color;
@@ -27,7 +27,8 @@ function createCanvas(canvasId) {
   }
 
   function init() {
-    canvas = document.getElementById(canvasId);
+    const section = document.getElementById(sectionId);
+    canvas = section.querySelector('canvas');
     ctx = canvas.getContext('2d');
     color = canvas.dataset.color;
     dots = [];
@@ -49,8 +50,8 @@ function createCanvas(canvasId) {
   function step() {
     toggle = !toggle;
 
-    // Move particles
     if (toggle) {
+      // Move particles
       for (i = 0; i < DOT_COUNT; i++) {
         dot = dots[i];
         if (dot.y < 0 || dot.y > height) dot.vy = -dot.vy;
