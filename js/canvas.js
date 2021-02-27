@@ -1,6 +1,6 @@
 const DOT_COUNT = 100;
 
-function createCanvas(sectionId) {
+export default function(sectionId) {
   let canvas;
   let ctx;
   let color;
@@ -77,5 +77,3 @@ function createCanvas(sectionId) {
   step();
   window.addEventListener('resize', resize);
 }
-
-export default createCanvas;
