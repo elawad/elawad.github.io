@@ -39,7 +39,7 @@ body ::selection {
   background-color: var(--dark);
 }
 
-/* Page */
+/* Pages */
 section {
   position: relative;
   height: 100%;
@@ -48,6 +48,12 @@ section {
 #section1 { background-color: var(--main-bg); }
 #section2 { background-color: #242424; }
 #section3 { background-color: #202020; }
+
+/* Animate */
+section.animate .container {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Particles */
 canvas {
@@ -80,6 +86,10 @@ a:hover {
   height: 100%;
   padding: 0 1em;
   box-sizing: border-box;
+
+  opacity: 0;
+  transform: translateY(4rem);
+  transition: all 0.7s ease;
 }
 
 .info {
@@ -94,7 +104,7 @@ a:hover {
   display: inline-block;
 }
 .info.arabic {
-  font-family: ara-jozoor, helvetica, sans-serif;
+  font-family: ara-jozoor, Helvetica, sans-serif;
   font-size: 9em;
   font-size: min(9em, 50vw);
   opacity: 0.2;

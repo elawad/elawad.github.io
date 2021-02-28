@@ -1,25 +1,23 @@
 export default function(sections, goTo) {
-  const ALL_IDS = [...sections].map(el => el.id).sort();
-  const MAX_IDX = ALL_IDS.length - 1;
-  const shownIds = [];
+  // Paging Observer //
+  const shownIds = new Set();
 
-  function onIntersect(entries) {
+  function pagingIntersect(entries) {
     entries.forEach(entry => {
       const isIn = entry.isIntersecting;
       const { id } = entry.target;
-      const idx = shownIds.indexOf(id);
-      if (isIn) shownIds.push(id);
-      else if (idx >= 0) shownIds.splice(idx, 1);
+      if (isIn) shownIds.add(id);
+      else shownIds.delete(id);
     });
   };
 
-  const observer = new IntersectionObserver(onIntersect);
-  sections.forEach(el => observer.observe(el));
+  const pagingObserver = new IntersectionObserver(pagingIntersect);
+  sections.forEach(el => pagingObserver.observe(el));
 
+  // Paging Keyboard //
   function goToNext(isDown = true) {
-    const ordered = [...shownIds.sort()];
-    if (isDown) ordered.reverse();
-    const id = ordered[0];
+    const sorted = [...shownIds].sort();
+    const id = isDown ? sorted.pop() : sorted.shift();
     goTo(id);
   }
 
@@ -35,4 +33,18 @@ export default function(sections, goTo) {
       goToNext(isDown);
     }
   });
+
+  // Text Animation Observer //
+  function textIntersect(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  const options = { threshold: 0.7 };
+  const textObserver = new IntersectionObserver(textIntersect, options);
+  sections.forEach(el => textObserver.observe(el));
 }
