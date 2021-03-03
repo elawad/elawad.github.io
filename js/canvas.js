@@ -54,8 +54,8 @@ export default function(sectionId) {
       // Move particles
       for (i = 0; i < DOT_COUNT; i++) {
         dot = dots[i];
-        if (dot.y < 0 || dot.y > height) dot.vy = -dot.vy;
         if (dot.x < 0 || dot.x > width) dot.vx = -dot.vx;
+        if (dot.y < 0 || dot.y > height) dot.vy = -dot.vy;
         dot.x += dot.vx;
         dot.y += dot.vy;
       }
