@@ -10,13 +10,13 @@ export default function(sectionId) {
   let dot;
   let toggle;
   let i;
-  const particle = {
+  const particle = Object.seal({
     x: 0,
     y: 0,
     vx: 0,
     vy: 0,
     radius: 0,
-  };
+  });
 
   function resize() {
     width = window.innerWidth;

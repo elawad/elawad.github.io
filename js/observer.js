@@ -1,5 +1,5 @@
 export default function(sections, goTo) {
-  // Paging Observer //
+  // Paging Observer
   const shownIds = new Set();
 
   function pagingIntersect(entries) {
@@ -14,13 +14,7 @@ export default function(sections, goTo) {
   const pagingObserver = new IntersectionObserver(pagingIntersect);
   sections.forEach(el => pagingObserver.observe(el));
 
-  // Paging Keyboard //
-  function goToNext(isDown = true) {
-    const sorted = [...shownIds].sort();
-    const id = isDown ? sorted.pop() : sorted.shift();
-    goTo(id);
-  }
-
+  // Paging Keyboard
   document.addEventListener('keydown', event => {
     const isUp = event.key === 'ArrowUp';
     const isDown = event.key === 'ArrowDown';
@@ -30,11 +24,13 @@ export default function(sections, goTo) {
       if (isRepeat) return;
 
       event.preventDefault();
-      goToNext(isDown);
+      const sorted = [...shownIds].sort();
+      const id = isDown ? sorted.pop() : sorted.shift();
+      goTo(id);
     }
   });
 
-  // Text Animation Observer //
+  // Text Animation Observer
   function textIntersect(entries, observer) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
