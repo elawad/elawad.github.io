@@ -25,13 +25,13 @@ html, body {
 }
 
 body {
-	font-family: proxima-nova, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family: proxima-nova, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.25;
   color: var(--light);
   background-color: var(--main-bg);
 
-	-webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -111,7 +111,7 @@ a:hover {
 }
 
 /* Arrow */
-.scroll {
+.link {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -123,9 +123,14 @@ a:hover {
   height: 1em;
   text-align: center;
 }
-.scroll:hover {
+.link:hover {
   transform: translateY(3px);
 }
-.scroll.up:hover {
+.link.up:hover {
   transform: translateY(-3px);
 }
+.github {
+  left: unset;
+  right: 0;
+}
+.github:hover { opacity: 0.4; }
