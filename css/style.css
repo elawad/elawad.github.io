@@ -108,6 +108,7 @@ a:hover {
   font-size: 9em;
   font-size: min(9em, 50vw);
   opacity: 0.2;
+  transform: translateY(-0.1em);
 }
 
 /* Arrow */

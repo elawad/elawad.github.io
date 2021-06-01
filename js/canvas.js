@@ -1,6 +1,5 @@
-const DOT_COUNT = 100;
-
 export default function(sectionId) {
+  let DOT_COUNT;
   let canvas;
   let ctx;
   let color;
@@ -8,14 +7,13 @@ export default function(sectionId) {
   let height;
   let dots;
   let dot;
-  let toggle;
   let i;
   const particle = Object.seal({
     x: 0,
     y: 0,
     vx: 0,
     vy: 0,
-    radius: 0,
+    radius: 0
   });
 
   function resize() {
@@ -27,13 +25,14 @@ export default function(sectionId) {
   }
 
   function init() {
-    const section = document.getElementById(sectionId);
-    canvas = section.querySelector('canvas');
+    canvas = document.getElementById(sectionId).querySelector('canvas');
     ctx = canvas.getContext('2d');
     color = canvas.dataset.color;
     dots = [];
 
     resize();
+    window.addEventListener('resize', resize);
+    DOT_COUNT = calcCount(width, height);
 
     // Setup particle detail
     for (i = 0; i < DOT_COUNT; i++) {
@@ -47,10 +46,8 @@ export default function(sectionId) {
     }
   }
 
-  function step() {
-    toggle = !toggle;
-
-    if (toggle) {
+  function step(move = true) {
+    if (move) {
       // Move particles
       for (i = 0; i < DOT_COUNT; i++) {
         dot = dots[i];
@@ -70,10 +67,17 @@ export default function(sectionId) {
       }
     }
 
-    requestAnimationFrame(step);
+    requestAnimationFrame(() => step(!move));
   }
 
   init();
   step();
-  window.addEventListener('resize', resize);
+}
+
+function calcCount(w, h) {
+  const min = 100;
+  const max = 300;
+  const ceil = Math.min(max, w * h / 3000);
+  const calc = Math.max(min, ceil);
+  return Math.floor(calc);
 }
