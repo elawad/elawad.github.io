@@ -1,16 +1,9 @@
-/* Fonts */
 @font-face {
   font-family: 'proxima-nova';
   src: local('proxima-nova'),
-    url('font/Proxima-Nova-Thin.woff') format('woff');
-}
-@font-face {
-  font-family: 'ara-jozoor';
-  src: local('ara-jozoor'),
-    url('font/Ara-Jozoor-Regular.woff') format('woff');
+    url('Proxima-Nova-Thin.woff') format('woff');
 }
 
-/* Variables */
 :root {
   --light: #fafafa;
   --dark: #686868;
@@ -49,13 +42,11 @@ section {
 #section2 { background-color: #242424; }
 #section3 { background-color: #202020; }
 
-/* Animate */
 section.animate .container {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Particles */
 canvas {
   height: 100%;
   width: 100%;
@@ -77,13 +68,12 @@ a:hover {
 /* Text */
 .container {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+
   padding: 0 1em;
   box-sizing: border-box;
 
@@ -95,21 +85,56 @@ a:hover {
 .info {
   margin: 0;
   font-size: 3em;
+  /* */
   font-size: max(2em, 4vw);
   max-width: 11.5em;
+  /* Typewriter // TODO
+  font-size: clamp(1rem, 3.2vw + 1.4rem, 3rem);
+  width: 100%;
+  max-width: 21ch;
+  min-height: 2.5em; */
 }
+
+/* for Typewriter? */
+/* @media (max-width: 640px) {
+  .info { min-height: 4em; }
+} */
+
 .info.email {
   font-size: 1em;
   margin-top: 1em;
   display: inline-block;
 }
-.info.arabic {
-  font-family: ara-jozoor, Helvetica, sans-serif;
-  font-size: 9em;
-  font-size: min(9em, 50vw);
+.info.name {
+  max-width: fit-content;
+  min-height: fit-content;
   opacity: 0.2;
-  transform: translateY(-0.1em);
 }
+.info.name img {
+  display: block;
+  width: 4rem;
+  width: clamp(4rem, 40vw + 4rem, 20rem);
+}
+
+/* Typewriter // TODO */
+/* .typer {
+  white-space: pre-wrap;
+}
+.cursor {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: -0.2em;
+  margin-bottom: -0.1em;
+  background: var(--light);
+  animation: blink .5s linear .5s infinite alternate;
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  60% { opacity: 0; }
+  100% { opacity: 0; }
+} */
 
 /* Arrow */
 .link {
@@ -130,8 +155,11 @@ a:hover {
 .link.up:hover {
   transform: translateY(-3px);
 }
-.github {
+
+.link.github {
   left: unset;
   right: 0;
 }
-.github:hover { opacity: 0.4; }
+.link.github:hover {
+  opacity: 0.4;
+}
