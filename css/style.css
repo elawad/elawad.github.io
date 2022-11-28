@@ -1,7 +1,6 @@
 @font-face {
   font-family: 'proxima-nova';
-  src: local('proxima-nova'),
-    url('Proxima-Nova-Thin.woff') format('woff');
+  src: local('proxima-nova'), url('Proxima-Nova-Thin.woff') format('woff');
 }
 
 :root {
@@ -36,6 +35,7 @@ body ::selection {
 section {
   position: relative;
   height: 100%;
+  overflow-y: hidden;
 }
 
 #section1 { background-color: var(--main-bg); }
@@ -51,6 +51,7 @@ canvas {
   height: 100%;
   width: 100%;
   display: block;
+  pointer-events: none;
 }
 
 /* Link */
@@ -85,56 +86,22 @@ a:hover {
 .info {
   margin: 0;
   font-size: 3em;
-  /* */
   font-size: max(2em, 4vw);
   max-width: 11.5em;
-  /* Typewriter // TODO
-  font-size: clamp(1rem, 3.2vw + 1.4rem, 3rem);
-  width: 100%;
-  max-width: 21ch;
-  min-height: 2.5em; */
 }
-
-/* for Typewriter? */
-/* @media (max-width: 640px) {
-  .info { min-height: 4em; }
-} */
 
 .info.email {
   font-size: 1em;
   margin-top: 1em;
   display: inline-block;
 }
-.info.name {
-  max-width: fit-content;
-  min-height: fit-content;
-  opacity: 0.2;
-}
+
 .info.name img {
+  opacity: 0.2;
   display: block;
   width: 4rem;
   width: clamp(4rem, 40vw + 4rem, 20rem);
 }
-
-/* Typewriter // TODO */
-/* .typer {
-  white-space: pre-wrap;
-}
-.cursor {
-  display: inline-block;
-  width: 1px;
-  height: 1em;
-  margin-left: -0.2em;
-  margin-bottom: -0.1em;
-  background: var(--light);
-  animation: blink .5s linear .5s infinite alternate;
-}
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  60% { opacity: 0; }
-  100% { opacity: 0; }
-} */
 
 /* Arrow */
 .link {

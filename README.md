@@ -1,5 +1,4 @@
-GitHub Page
-===========
+## GitHub Page
 
 Demo page using github.io
 

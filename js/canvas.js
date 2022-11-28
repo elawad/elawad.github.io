@@ -1,4 +1,4 @@
-export default function(sectionId) {
+function Canvas(sectionId) {
   let DOT_COUNT;
   let canvas;
   let ctx;
@@ -13,7 +13,7 @@ export default function(sectionId) {
     y: 0,
     vx: 0,
     vy: 0,
-    radius: 0
+    radius: 0,
   });
 
   function resize() {
@@ -77,7 +77,9 @@ export default function(sectionId) {
 function calcCount(w, h) {
   const min = 100;
   const max = 300;
-  const ceil = Math.min(max, w * h / 3000);
+  const ceil = Math.min(max, (w * h) / 3000);
   const calc = Math.max(min, ceil);
   return Math.floor(calc);
 }
+
+export default Canvas;
